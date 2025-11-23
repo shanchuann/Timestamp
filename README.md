@@ -3,7 +3,6 @@
 一个轻量级的C++时间戳处理工具，提供时间戳的获取、格式化输出等功能，可用于日志系统、文件命名等场景中需要时间信息的地方。
 
 > **格式化输出**
-> 
 > `int a = 10,b = 20; printf("a = %d b = %d",a,b);`
 >
 > `OUTPUT: a = 10 b = 20`
@@ -26,7 +25,7 @@
 
 ## 文件结构
 
-```
+```txt
 Timestamp/
 ├── logsys/
 │   ├── include/
@@ -37,49 +36,56 @@ Timestamp/
 └── CMakeLists.txt          // CMake构建配置文件
 ```
 
-
 ## 编译与运行
 
 ### 编译步骤
 
 1. 确保已安装CMake（版本≥3.10）和C++编译器（如g++或MSVC）
 2. 在项目根目录创建构建目录(若没有)并进入：
+
    ```bash
    mkdir build && cd build
    ```
+
 3. 配置项目：
+
    ```bash
    cmake ..
    ```
+
 4. 编译项目：
-   
+
    **Linux / macOS:**
+
    ```bash
    make
    ```
-   
+
    **Windows:**
+
    ```powershell
    cmake --build .
    ```
-   
-   编译完成后，可执行文件`Timestamp`将生成在`bin`目录下（Windows下通常在`bin/Debug/`）。
 
+   编译完成后，可执行文件`Timestamp`将生成在`bin`目录下（Windows下通常在`bin/Debug/`）。
 
 ### 运行测试
 
 **Linux / macOS:**
+
 ```bash
 ./bin/Timestamp
 ```
 
 **Windows:**
+
 ```powershell
 .\bin\Debug\Timestamp.exe
 ```
 
 运行后将输出类似以下内容（具体时间取决于运行时的系统时间）：
-```
+
+```txt
 2025/11/23 17:45:09.812002
 20251123-174509.812002
 ```
@@ -102,7 +108,6 @@ int main()
 }
 ```
 
-
 ## 类方法说明
 
 | 方法名                 | 功能描述                                                                 |
@@ -115,7 +120,6 @@ int main()
 | `getMicroSec()`        | 返回时间戳的微秒级数值（从1970年1月1日00:00:00到当前的微秒数）           |
 | `getSeconds()`         | 返回时间戳的秒级数值（从1970年1月1日00:00:00到当前的秒数，向下取整）     |
 | `swap()`               | 交换两个Timestamp对象的时间戳数据                                         |
-
 
 ## 注意事项
 
