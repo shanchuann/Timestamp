@@ -1,0 +1,1 @@
+/usr/bin/c++ -rdynamic CMakeFiles/test.dir/test.cpp.o CMakeFiles/test.dir/logsys/src/Timestamp.cpp.o -o /home/shanchuan/Timestamp/bin/test 
