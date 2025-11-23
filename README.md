@@ -22,6 +22,7 @@
   文件友好型字符串（格式：`YYYYMMDD-HHMMSS.微秒`）
 - 支持时间戳有效性判断
 - 提供时间戳的微秒级和秒级数值获取
+- **跨平台支持**：支持 Windows 和 Linux 系统
 
 ## 文件结构
 
@@ -41,26 +42,40 @@ Timestamp/
 
 ### 编译步骤
 
-1. 确保已安装CMake（版本≥3.5）和C++编译器（如g++）
+1. 确保已安装CMake（版本≥3.10）和C++编译器（如g++或MSVC）
 2. 在项目根目录创建构建目录(若没有)并进入：
    ```bash
    mkdir build && cd build
    ```
-3. 生成Makefile：
+3. 配置项目：
    ```bash
    cmake ..
    ```
 4. 编译项目：
+   
+   **Linux / macOS:**
    ```bash
    make
    ```
-   编译完成后，可执行文件`test`将生成在`bin`目录下
+   
+   **Windows:**
+   ```powershell
+   cmake --build .
+   ```
+   
+   编译完成后，可执行文件`Timestamp`将生成在`bin`目录下（Windows下通常在`bin/Debug/`）。
 
 
 ### 运行测试
 
+**Linux / macOS:**
 ```bash
-./bin/test
+./bin/Timestamp
+```
+
+**Windows:**
+```powershell
+.\bin\Debug\Timestamp.exe
 ```
 
 运行后将输出类似以下内容（具体时间取决于运行时的系统时间）：
@@ -71,7 +86,7 @@ Timestamp/
 
 ## 使用示例
 
-以下是`test.cpp`中的核心使用示例，展示了Timestamp的基本用法：
+以下是`Timestamp.cpp`中的核心使用示例，展示了Timestamp的基本用法：
 
 ```cpp
 #include "Timestamp.hpp"
@@ -105,6 +120,6 @@ int main()
 ## 注意事项
 
 - 时间计算基于Unix时间戳（起始时间为1970年1月1日00:00:00 UTC）
-- 目前使用`localtime_r`获取本地时间，若需要UTC时间，可修改源码中`localtime_r`为`gmtime_r`
-- 依赖系统函数`gettimeofday`（Linux系统），确保编译环境支持该函数
+- 目前使用`localtime_r`（Linux）或 `localtime_s`（Windows）获取本地时间，若需要UTC时间，可修改源码中相关函数为`gmtime_r`
+- Linux系统依赖`gettimeofday`，Windows系统使用`std::chrono`
 - 微秒部分输出长度可能因系统时间精度略有差异，通常为6位数字
