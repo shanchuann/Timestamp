@@ -32,9 +32,8 @@ Timestamp/
 │   │   └── Timestamp.hpp    // 时间戳类头文件（声明）
 │   └── src/
 │       └── Timestamp.cpp    // 时间戳类实现文件
-├── test.cpp                 // 测试程序，演示Timestamp的使用
-└──  CMakeLists.txt           // CMake构建配置文件
-   
+├── Timestamp.cpp            // 测试程序，演示Timestamp的使用
+└── CMakeLists.txt          // CMake构建配置文件
 ```
 
 
